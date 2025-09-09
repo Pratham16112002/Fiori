@@ -1,0 +1,24 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="assignment1.controller.details.OrderDetail"
+>
+    <f:DynamicPage title="Order Detail Page">
+        <f:header>
+            <f:DynamicPageHeader >
+                <HBox justifyContent="SpaceBetween">
+                    <Title text="Orders for employee"></Title>
+                    <Button text="Home" type="Emphasized" press="goHome"></Button>
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+            <f:content>
+        <List
+            id="orderDetailsList"
+            headerText="Order Line Items"
+        />
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

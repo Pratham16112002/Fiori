@@ -1,0 +1,18 @@
+{
+    "agencyID": {
+        "agencyIDVH": {
+            "selectedItems": []
+        }
+    },
+    "customerID" : {
+        "customerIDVH" : {
+            "selectedItems" : []
+        }
+    },
+    "beginDate" : {
+        "value" : ""
+    },
+    "endDate" : {
+        "value" : ""
+    }
+}

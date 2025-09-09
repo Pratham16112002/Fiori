@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zpp_conn_fl_sd" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZPP_AIRP_ID_VH_CDSType" sap:label="Airport ID Value Help CDS" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AirportId"/>
+                </Key>
+                <Property Name="AirportId" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airport ID" sap:quickinfo="Flight Reference Scenario: Airport ID"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="40" sap:label="Airport Name" sap:quickinfo="Flight Reference Scenario: Airport Name"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City" sap:quickinfo="Flight Reference Scenario: City"/>
+                <Property Name="Country" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+            </EntityType>
+            <EntityType Name="ZPP_CARR_ID_CDSType" sap:label="Carrier Information CDS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CarrierId"/>
+                </Key>
+                <Property Name="CarrierId" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airline ID" sap:quickinfo="Flight Reference Scenario: Carrier ID"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="40" sap:label="Airline Name" sap:quickinfo="Flight Reference Scenario: Carrier Name"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityType Name="ZPP_CONN_FLType" sap:label="Flight Connection CDS Data Model" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CarrierId"/>
+                    <PropertyRef Name="ConnectionId"/>
+                </Key>
+                <Property Name="CarrierId" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:text="CarrierId_Text" sap:label="Airline ID" sap:quickinfo="Flight Reference Scenario: Carrier ID"/>
+                <Property Name="CarrierId_Text" Type="Edm.String" MaxLength="40" sap:label="Airline Name" sap:quickinfo="Flight Reference Scenario: Carrier Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConnectionId" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Flight Number" sap:quickinfo="Flight Reference Scenario: Connection ID"/>
+                <Property Name="DepartureAirportID" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Departure Airport ID" sap:quickinfo="Flight Reference Scenario: From Airport" sap:value-list="standard"/>
+                <Property Name="ArrivalAirportID" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Arrival Airport ID" sap:quickinfo="Flight Reference Scenario: To Airport"/>
+                <Property Name="DepartureTime" Type="Edm.Time" Precision="0" sap:label="Departure" sap:quickinfo="Flight Reference Scenario: Departure Time"/>
+                <Property Name="ArrivalTime" Type="Edm.Time" Precision="0" sap:label="Arrival" sap:quickinfo="Flight Reference Scenario: Arrival Time"/>
+                <Property Name="Distance" Type="Edm.Int32" sap:unit="DistanceUnit" sap:label="Flight Distance" sap:quickinfo="Flight Reference Scenario: Flight Distance"/>
+                <Property Name="DistanceUnit" Type="Edm.String" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <NavigationProperty Name="to_CARR_INFO" Relationship="cds_zpp_conn_fl_sd.assoc_DD28B6C2437E43C57324D61ECC125A91" FromRole="FromRole_assoc_DD28B6C2437E43C57324D61ECC125A91" ToRole="ToRole_assoc_DD28B6C2437E43C57324D61ECC125A91"/>
+                <NavigationProperty Name="to_FLT_INFO" Relationship="cds_zpp_conn_fl_sd.assoc_8C60EB93160F695FC58CED87A3EFB9CC" FromRole="FromRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC" ToRole="ToRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC"/>
+            </EntityType>
+            <EntityType Name="ZPP_FLT_INFType" sap:label="Fligt Information Data Model" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CarrierId"/>
+                    <PropertyRef Name="ConnectionId"/>
+                    <PropertyRef Name="FlightDate"/>
+                </Key>
+                <Property Name="CarrierId" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airline ID" sap:quickinfo="Flight Reference Scenario: Carrier ID"/>
+                <Property Name="ConnectionId" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Flight Number" sap:quickinfo="Flight Reference Scenario: Connection ID"/>
+                <Property Name="FlightDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight Reference Scenario: Flight Date"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Flight Price" sap:quickinfo="Flight Reference Scenario: Flight Price"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="PlaneTypeId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Plane Type" sap:quickinfo="Flight Reference Scenario: Plane Type ID"/>
+                <Property Name="SeatsMax" Type="Edm.Int32" sap:label="Maximum Capacity" sap:quickinfo="Flight Reference Scenario: Plane Seats Max"/>
+                <Property Name="SeatsOccupied" Type="Edm.Int32" sap:label="Occupied Seats" sap:quickinfo="Flight Reference Scenario: Plane Seats Occupied"/>
+                <Property Name="IsAvailable" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <Association Name="assoc_8C60EB93160F695FC58CED87A3EFB9CC" sap:content-version="1">
+                <End Type="cds_zpp_conn_fl_sd.ZPP_CONN_FLType" Multiplicity="1" Role="FromRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC"/>
+                <End Type="cds_zpp_conn_fl_sd.ZPP_FLT_INFType" Multiplicity="*" Role="ToRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC"/>
+            </Association>
+            <Association Name="assoc_DD28B6C2437E43C57324D61ECC125A91" sap:content-version="1">
+                <End Type="cds_zpp_conn_fl_sd.ZPP_CONN_FLType" Multiplicity="1" Role="FromRole_assoc_DD28B6C2437E43C57324D61ECC125A91"/>
+                <End Type="cds_zpp_conn_fl_sd.ZPP_CARR_ID_CDSType" Multiplicity="1" Role="ToRole_assoc_DD28B6C2437E43C57324D61ECC125A91"/>
+            </Association>
+            <EntityContainer Name="cds_zpp_conn_fl_sd_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZPP_AIRP_ID_VH_CDS" EntityType="cds_zpp_conn_fl_sd.ZPP_AIRP_ID_VH_CDSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZPP_CARR_ID_CDS" EntityType="cds_zpp_conn_fl_sd.ZPP_CARR_ID_CDSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZPP_CONN_FL" EntityType="cds_zpp_conn_fl_sd.ZPP_CONN_FLType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZPP_FLT_INF" EntityType="cds_zpp_conn_fl_sd.ZPP_FLT_INFType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_DD28B6C2437E43C57324D61ECC125A91" Association="cds_zpp_conn_fl_sd.assoc_DD28B6C2437E43C57324D61ECC125A91" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_CONN_FL" Role="FromRole_assoc_DD28B6C2437E43C57324D61ECC125A91"/>
+                    <End EntitySet="ZPP_CARR_ID_CDS" Role="ToRole_assoc_DD28B6C2437E43C57324D61ECC125A91"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_8C60EB93160F695FC58CED87A3EFB9CC" Association="cds_zpp_conn_fl_sd.assoc_8C60EB93160F695FC58CED87A3EFB9CC" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZPP_CONN_FL" Role="FromRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC"/>
+                    <End EntitySet="ZPP_FLT_INF" Role="ToRole_assoc_8C60EB93160F695FC58CED87A3EFB9CC"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities/ZPP_AIRP_ID_VH_CDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities/ZPP_CARR_ID_CDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities/ZPP_CONN_FL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities/ZPP_FLT_INF" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zpp_conn_fl_sd.cds_zpp_conn_fl_sd_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZPP_CONN_FL_SD/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZPP_CONN_FL_SD/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,38 @@
+<mvc:View
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+    controllerName="assignment1.controller.details.ProductDetail"
+>
+    <f:DynamicPage title="Product Details">
+        <f:header>
+            <f:DynamicPageHeader>
+                <HBox justifyContent="SpaceBetween">
+                    <Title text="{ProductName}"></Title>
+                    <Button
+                        type="Emphasized"
+                        text="Home"
+                        press="goHome"
+                    />
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <form:SimpleForm >
+
+                <Label text="Product Name"/>
+                <Text text="{ProductName}"/>
+
+                <Label text="Quantity Per Unit" />
+                <Text text="{QuantityPerUnit}" />
+
+                <Label text="Units In Stock" />
+                <Text text="{UnitsInStock}" />
+
+                <Label text="Units On Order" />
+                <Text text="{UnitsOnOrder}" />
+            </form:SimpleForm>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

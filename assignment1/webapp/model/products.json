@@ -1,0 +1,114 @@
+[
+    {
+      "ProductName": "Organic Apple Juice",
+      "Description": "Fresh pressed fruit drink",
+      "Price": 4.5,
+      "Currency": "USD",
+      "SupplierID": 1
+    },
+    {
+      "ProductName": "Herbal Tea",
+      "Description": "Relaxing evening tea blend",
+      "Price": 2.75,
+      "Currency": "USD",
+      "SupplierID": 1
+    },
+    {
+      "ProductName": "Cajun Seasoning",
+      "Description": "Spicy southern flavor mix",
+      "Price": 3.99,
+      "Currency": "USD",
+      "SupplierID": 2
+    },
+    {
+      "ProductName": "Gumbo Soup Mix",
+      "Description": "Authentic New Orleans recipe",
+      "Price": 5.25,
+      "Currency": "USD",
+      "SupplierID": 2
+    },
+    {
+      "ProductName": "Homemade Apple Pie",
+      "Description": "Traditional farm-style dessert",
+      "Price": 6.75,
+      "Currency": "USD",
+      "SupplierID": 3
+    },
+    {
+      "ProductName": "Berry Jam",
+      "Description": "Handcrafted sweet fruit spread",
+      "Price": 3.8,
+      "Currency": "USD",
+      "SupplierID": 3
+    },
+    {
+      "ProductName": "Sushi Rice",
+      "Description": "Short grain sticky rice",
+      "Price": 6.75,
+      "Currency": "JPY",
+      "SupplierID": 4
+    },
+    {
+      "ProductName": "Seaweed Sheets",
+      "Description": "Dried nori for sushi",
+      "Price": 3.1,
+      "Currency": "JPY",
+      "SupplierID": 4
+    },
+    {
+      "ProductName": "Goat Cheese",
+      "Description": "Soft artisan Spanish cheese",
+      "Price": 7.5,
+      "Currency": "EUR",
+      "SupplierID": 5
+    },
+    {
+      "ProductName": "Cheese Platter",
+      "Description": "Mixed Spanish cheese tray",
+      "Price": 11.2,
+      "Currency": "EUR",
+      "SupplierID": 5
+    },
+    {
+      "ProductName": "Swiss Chocolate",
+      "Description": "Creamy dark chocolate bars",
+      "Price": 4.9,
+      "Currency": "CHF",
+      "SupplierID": 6
+    },
+    {
+      "ProductName": "Hazelnut Spread",
+      "Description": "Smooth nut chocolate cream",
+      "Price": 5.75,
+      "Currency": "CHF",
+      "SupplierID": 6
+    },
+    {
+      "ProductName": "Olive Oil",
+      "Description": "Cold-pressed Italian oil",
+      "Price": 8.4,
+      "Currency": "EUR",
+      "SupplierID": 7
+    },
+    {
+      "ProductName": "Sun-Dried Tomatoes",
+      "Description": "Mediterranean flavor boost",
+      "Price": 4.1,
+      "Currency": "EUR",
+      "SupplierID": 7
+    },
+    {
+      "ProductName": "Maple Syrup",
+      "Description": "Pure Canadian tree syrup",
+      "Price": 6.2,
+      "Currency": "CAD",
+      "SupplierID": 8
+    },
+    {
+      "ProductName": "Pancake Mix",
+      "Description": "Easy fluffy breakfast mix",
+      "Price": 3.9,
+      "Currency": "CAD",
+      "SupplierID": 8
+    }
+  ]

@@ -1,0 +1,8 @@
+{
+    "options": [
+        { "key": "O", "text": "Open" },
+        { "key": "X", "text": "Rejected" },
+        { "key": "A", "text": "Accepted" }
+    ],
+    "selectedKeys": []
+}

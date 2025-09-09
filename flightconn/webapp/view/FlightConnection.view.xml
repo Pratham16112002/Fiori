@@ -1,0 +1,142 @@
+<mvc:View
+    xmlns:smartfield="sap.ui.comp.smartfield"
+    xmlns:table="sap.ui.table"
+    xmlns:f="sap.f"
+    controllerName="flightconn.controller.FlightConnection"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <f:DynamicPage
+        id="page"
+        title="{i18n>title}"
+    >
+        <f:header>
+            <f:DynamicPageHeader id="dynamicPageHeader">
+                <HBox
+                    id="headerHbox1"
+                    justifyContent="SpaceBetween"
+                    alignContent="End"
+                >
+                    <VBox justifyContent="End">
+                        <SearchField liveChange="onSearch" width="150%"></SearchField>
+                    </VBox>
+                    <VBox id="inputVBox1">
+                        <Label
+                            labelFor="arrivalAirportIdInput"
+                            text="Arrival Airport"
+                        />
+                        <Input
+                            id="arrivalAirportIdInput"
+                            showValueHelp="true"
+                            editable="true"
+                            value="{flightViewConfig>/arrivalAirportInput/text}"
+                            valueHelpRequest="onAirportValueHelp"
+                        />
+                    </VBox>
+                    <VBox id="inputVBox2">
+                        <Label
+                            text="Departure Airpot"
+                            labelFor="departureAirportIdInput"
+                        />
+                        <Input
+                            id="departureAirportIdInput"
+                            showValueHelp="true"
+                            editable="true"
+                            value="{flightViewConfig>/departureAirportInput/text}"
+                            valueHelpRequest="onAirportValueHelp"
+                        />
+                    </VBox>
+                    <VBox justifyContent="End">
+                        <HBox>
+                            <Button
+                            class="sapUiTinyMarginEnd"
+                                text="Go"
+                                type="Emphasized"
+                                press="onApplyFilter"
+                            />
+                            <Button
+                                text="ClearFilter"
+                                icon="sap-icon://clear-filter"
+                                press="onClearFilter"
+                                visible="{flightViewConfig>/clearFilterButton/visibility}"
+                            />
+                        </HBox>
+                    </VBox>
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <table:Table
+                id="flightConnTable"
+                rows="{/ZPP_CONN_FL}"
+                selectionMode="Single"
+                rowSelectionChange="onRowSelect "
+            >
+                <table:extension>
+                    <OverflowToolbar style="Standard">
+                        <Title
+                            id="title"
+                            text="Flight Connections"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+                <table:columns>
+                    <table:Column width="15rem">
+                        <Label text="Travel ID" />
+                        <table:template>
+                            <Text
+                                text="{= ${CarrierId} + ' (' + ${CarrierId_Text} + ') ' }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column width="10rem">
+                        <Label text="Flight Number" />
+                        <table:template>
+                            <Text text="{ConnectionId}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Departure Airport ID" />
+                        <table:template>
+                            <Text text="{DepartureAirportID}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Arrival Airport ID" />
+                        <table:template>
+                            <Text text="{ArrivalAirportID}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Departure Time" />
+                        <table:template>
+                            <Text
+                                text="{
+                            path : 'DepartureTime' ,
+                            formatter : '.timeFormatter.formatTime'}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Arrival Time" />
+                        <table:template>
+                            <Text
+                                text="{
+                            path : 'ArrivalTime',
+                            formatter : '.timeFormatter.formatTime'}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Total Distance" />
+                        <table:template>
+                            <Text
+                                text="{= ${Distance} + ' ' + ${DistanceUnit} }"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

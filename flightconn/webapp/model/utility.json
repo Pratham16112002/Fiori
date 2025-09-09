@@ -1,0 +1,11 @@
+{
+    "arrivalAirportInput" : {
+        "text" : ""
+    },
+    "departureAirportInput" : {
+        "text" : ""
+    },
+    "clearFilterButton" : {
+        "visibility" : false
+    }
+}

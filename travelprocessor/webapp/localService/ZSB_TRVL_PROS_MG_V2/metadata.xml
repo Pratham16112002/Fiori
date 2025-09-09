@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ODM',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.ODM.v1" Alias="SAP__ODM"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zsr_trvel_mg" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="xDMOxI_AgencyType" m:HasStream="true" sap:label="Agency View - CDS Data Model" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AgencyID"/>
+                </Key>
+                <Property Name="AgencyID" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="Name" sap:label="Agency ID" sap:quickinfo="Flight Reference Scenario: Agency ID"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="80" sap:label="Agency Name" sap:quickinfo="Flight Reference Scenario: Agency Name"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="60" sap:label="Street" sap:quickinfo="Flight Reference Scenario: Street"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="Flight Reference Scenario: Postal Code"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City" sap:quickinfo="Flight Reference Scenario: City"/>
+                <Property Name="CountryCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Phone No." sap:quickinfo="Flight Reference Scenario: Phone Number" sap:semantics="tel"/>
+                <Property Name="EMailAddress" Type="Edm.String" MaxLength="256" sap:label="E-Mail Address" sap:quickinfo="Flight Reference Scenario: Email Address" sap:semantics="email"/>
+                <Property Name="WebAddress" Type="Edm.String" MaxLength="256" sap:label="Web Address" sap:quickinfo="Flight Reference Scenario: Web Address"/>
+                <Property Name="MimeType" Type="Edm.String" MaxLength="128" sap:label="Mime Type" sap:quickinfo="MimeType"/>
+                <Property Name="Filename" Type="Edm.String" MaxLength="128" sap:label="Filename"/>
+                <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time"/>
+                <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time"/>
+            </EntityType>
+            <EntityType Name="xDMOxI_CustomerType" sap:label="Customer View - CDS Data Model" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerID"/>
+                </Key>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="LastName" sap:label="Customer ID" sap:quickinfo="Flight Reference Scenario: Customer ID"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="Flight Reference Scenario: First Name"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name" sap:quickinfo="Flight Reference Scenario: Last Name"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="10" sap:label="Title" sap:quickinfo="Flight Reference Scenario: Title"/>
+                <Property Name="Street" Type="Edm.String" MaxLength="60" sap:label="Street" sap:quickinfo="Flight Reference Scenario: Street"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code" sap:quickinfo="Flight Reference Scenario: Postal Code"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="City" sap:quickinfo="Flight Reference Scenario: City"/>
+                <Property Name="CountryCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country/Region Key"/>
+                <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Phone No." sap:quickinfo="Flight Reference Scenario: Phone Number" sap:semantics="tel"/>
+                <Property Name="EMailAddress" Type="Edm.String" MaxLength="256" sap:label="E-Mail Address" sap:quickinfo="Flight Reference Scenario: Email Address" sap:semantics="email"/>
+            </EntityType>
+            <EntityType Name="ZBOOK_MG_PCDSType" sap:label="Travel Booking Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TravelId"/>
+                    <PropertyRef Name="BookingId"/>
+                </Key>
+                <Property Name="TravelId" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Travel ID" sap:quickinfo="Flight Reference Scenario: Travel ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BookingId" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Booking Number" sap:quickinfo="Flight Reference Scenario: Booking ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BookingDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Booking Date" sap:quickinfo="Flight Reference Scenario: Booking Date" sap:updatable="false"/>
+                <Property Name="CustomerId" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:text="CustomerName" sap:label="Customer ID" sap:quickinfo="Flight Reference Scenario: Customer ID" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="Flight Reference Scenario: First Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CarrierId" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:text="CarrierName" sap:label="Airline ID" sap:quickinfo="Flight Reference Scenario: Carrier ID"/>
+                <Property Name="CarrierName" Type="Edm.String" MaxLength="40" sap:label="Airline Name" sap:quickinfo="Flight Reference Scenario: Carrier Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="ConnectionId" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Flight Number" sap:quickinfo="Flight Reference Scenario: Connection ID"/>
+                <Property Name="FlightDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight Reference Scenario: Flight Date"/>
+                <Property Name="FlightPrice" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Flight Price" sap:quickinfo="Flight Reference Scenario: Flight Price"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="BookingStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="BookingStatusTxt" sap:label="Booking Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
+                <Property Name="BookingStatusTxt" Type="Edm.String" MaxLength="1024" sap:label="Booking Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Customer" Relationship="cds_zsr_trvel_mg.assoc_5DC3656C862DADCB8E0B31D7BFD4607E" FromRole="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E" ToRole="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                <NavigationProperty Name="to_TravelBookSupplement" Relationship="cds_zsr_trvel_mg.assoc_335CE526CA8349505D4EB1F9EED3EF49" FromRole="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49" ToRole="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
+                <NavigationProperty Name="to_Travel" Relationship="cds_zsr_trvel_mg.assoc_B8B688337FF3A77AD757E225F52A83E9" FromRole="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9" ToRole="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
+            </EntityType>
+            <EntityType Name="ZBOOK_SUP_MG_SUPPType" sap:label="Travel Booking Suppliement Details Projection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TravelId"/>
+                    <PropertyRef Name="BookingId"/>
+                    <PropertyRef Name="BookingSupplementId"/>
+                </Key>
+                <Property Name="TravelId" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Travel ID" sap:quickinfo="Flight Reference Scenario: Travel ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BookingId" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Booking Number" sap:quickinfo="Flight Reference Scenario: Booking ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BookingSupplementId" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:label="Book. Supp. Number" sap:quickinfo="Flight Reference Scenario: Booking Supplement ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SupplementId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Product ID" sap:quickinfo="Flight Reference Scenario: Supplement ID"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Product Price" sap:quickinfo="Flight Reference Scenario: Supplement Price"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Travel_Booking" Relationship="cds_zsr_trvel_mg.assoc_335CE526CA8349505D4EB1F9EED3EF49" FromRole="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49" ToRole="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
+                <NavigationProperty Name="to_Travel" Relationship="cds_zsr_trvel_mg.assoc_DE571062E0370F4BBCC16948F40EDD75" FromRole="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75" ToRole="ToRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
+            </EntityType>
+            <EntityType Name="ZTRVEL_MG_PCDSType" sap:label="Travel Details Projection CDS View Model" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TravelId"/>
+                </Key>
+                <Property Name="TravelId" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="NonNegative" sap:label="Travel ID" sap:quickinfo="Flight Reference Scenario: Travel ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="AgencyId" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:text="AgencyName" sap:label="Agency ID" sap:quickinfo="Flight Reference Scenario: Agency ID" sap:value-list="standard"/>
+                <Property Name="AgencyName" Type="Edm.String" MaxLength="80" sap:label="Agency Name" sap:quickinfo="Flight Reference Scenario: Agency Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CustomerId" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative" sap:text="CustomerName" sap:label="Customer ID" sap:quickinfo="Flight Reference Scenario: Customer ID" sap:value-list="standard"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="40" sap:label="First Name" sap:quickinfo="Flight Reference Scenario: First Name" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="BeginDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Starting Date" sap:quickinfo="Flight Reference Scenario: Start Date"/>
+                <Property Name="EndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Flight Reference Scenario: End Date"/>
+                <Property Name="BookingFee" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Booking Fee" sap:quickinfo="Flight Reference Scenario: Booking Fee"/>
+                <Property Name="TotalPrice" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Total Price" sap:quickinfo="Flight Reference Scenario: Total Price"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="1024" sap:label="Description" sap:quickinfo="Flight Reference Scenario: Description"/>
+                <Property Name="OverallStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="OverallStatusText" sap:label="Overall Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
+                <Property Name="OverallStatusText" Type="Edm.String" MaxLength="1024" sap:label="Overall Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Agency" Relationship="cds_zsr_trvel_mg.assoc_FCD0302D5775A8D3E8DD16441B87B35F" FromRole="FromRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F" ToRole="ToRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+                <NavigationProperty Name="to_Customer" Relationship="cds_zsr_trvel_mg.assoc_A450DDA5529F540EC53E4D2B22DF059B" FromRole="FromRole_assoc_A450DDA5529F540EC53E4D2B22DF059B" ToRole="ToRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
+                <NavigationProperty Name="to_Travel_Bookings" Relationship="cds_zsr_trvel_mg.assoc_B8B688337FF3A77AD757E225F52A83E9" FromRole="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9" ToRole="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
+            </EntityType>
+            <Association Name="assoc_FCD0302D5775A8D3E8DD16441B87B35F" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+                <End Type="cds_zsr_trvel_mg.xDMOxI_AgencyType" Multiplicity="0..1" Role="ToRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+            </Association>
+            <Association Name="assoc_A450DDA5529F540EC53E4D2B22DF059B" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
+                <End Type="cds_zsr_trvel_mg.xDMOxI_CustomerType" Multiplicity="0..1" Role="ToRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
+            </Association>
+            <Association Name="assoc_B8B688337FF3A77AD757E225F52A83E9" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="*" Role="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9">
+                        <PropertyRef Name="TravelId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9">
+                        <PropertyRef Name="TravelId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_335CE526CA8349505D4EB1F9EED3EF49" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType" Multiplicity="*" Role="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49">
+                        <PropertyRef Name="TravelId"/>
+                        <PropertyRef Name="BookingId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49">
+                        <PropertyRef Name="TravelId"/>
+                        <PropertyRef Name="BookingId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                <End Type="cds_zsr_trvel_mg.xDMOxI_CustomerType" Multiplicity="1" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+            </Association>
+            <Association Name="assoc_DE571062E0370F4BBCC16948F40EDD75" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType" Multiplicity="1" Role="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
+                <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="ToRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_DE571062E0370F4BBCC16948F40EDD75">
+                        <PropertyRef Name="TravelId"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75">
+                        <PropertyRef Name="TravelId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="cds_zsr_trvel_mg_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="xDMOxI_Agency" EntityType="cds_zsr_trvel_mg.xDMOxI_AgencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xDMOxI_Customer" EntityType="cds_zsr_trvel_mg.xDMOxI_CustomerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBOOK_MG_PCDS" EntityType="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" sap:creatable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZBOOK_SUP_MG_SUPP" EntityType="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType" sap:creatable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZTRVEL_MG_PCDS" EntityType="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" Association="cds_zsr_trvel_mg.assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBOOK_MG_PCDS" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                    <End EntitySet="xDMOxI_Customer" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DE571062E0370F4BBCC16948F40EDD75" Association="cds_zsr_trvel_mg.assoc_DE571062E0370F4BBCC16948F40EDD75" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBOOK_SUP_MG_SUPP" Role="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
+                    <End EntitySet="ZTRVEL_MG_PCDS" Role="ToRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_FCD0302D5775A8D3E8DD16441B87B35F" Association="cds_zsr_trvel_mg.assoc_FCD0302D5775A8D3E8DD16441B87B35F" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTRVEL_MG_PCDS" Role="FromRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+                    <End EntitySet="xDMOxI_Agency" Role="ToRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A450DDA5529F540EC53E4D2B22DF059B" Association="cds_zsr_trvel_mg.assoc_A450DDA5529F540EC53E4D2B22DF059B" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTRVEL_MG_PCDS" Role="FromRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
+                    <End EntitySet="xDMOxI_Customer" Role="ToRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_B8B688337FF3A77AD757E225F52A83E9" Association="cds_zsr_trvel_mg.assoc_B8B688337FF3A77AD757E225F52A83E9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTRVEL_MG_PCDS" Role="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
+                    <End EntitySet="ZBOOK_MG_PCDS" Role="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_335CE526CA8349505D4EB1F9EED3EF49" Association="cds_zsr_trvel_mg.assoc_335CE526CA8349505D4EB1F9EED3EF49" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBOOK_MG_PCDS" Role="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
+                    <End EntitySet="ZBOOK_SUP_MG_SUPP" Role="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
+                </AssociationSet>
+                <FunctionImport Name="copyTravel" ReturnType="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" EntitySet="ZTRVEL_MG_PCDS" m:HttpMethod="POST" sap:action-for="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType">
+                    <Parameter Name="TravelId" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Travel ID"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_AgencyType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
+                <Annotation Term="SAP__core.ContentDisposition">
+                    <Record>
+                        <PropertyValue Property="Filename" Path="Filename"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.CreatedAt" Path="LocalCreatedAt"/>
+                <Annotation Term="Common.CreatedBy" Path="LocalCreatedBy"/>
+                <Annotation Term="SAP__core.MediaType" Path="MimeType"/>
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="org" Path="Name"/>
+                        <PropertyValue Property="adr">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                                    <PropertyValue Property="locality" Path="City"/>
+                                    <PropertyValue Property="street" Path="Street"/>
+                                    <PropertyValue Property="country" Path="CountryCode"/>
+                                    <PropertyValue Property="code" Path="PostalCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="tel">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/work"/>
+                                    <PropertyValue Property="uri" Path="PhoneNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="email">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="address" Path="EMailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Address" Qualifier="pref">
+                    <Record>
+                        <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                        <PropertyValue Property="locality" Path="City"/>
+                        <PropertyValue Property="street" Path="Street"/>
+                        <PropertyValue Property="country" Path="CountryCode"/>
+                        <PropertyValue Property="code" Path="PostalCode"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/to_TravelBookSupplement" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/to_Travel_Bookings" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/xDMOxI_Agency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="EMailAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="WebAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>EMailAddress</PropertyPath>
+                                <PropertyPath>WebAddress</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/xDMOxI_Customer" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="EMailAddress"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>EMailAddress</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/BookingStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/CarrierId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/ConnectionId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/FlightDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType/Price" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType/SupplementId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/AgencyId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/BeginDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/BookingFee" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/CustomerId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/EndDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/OverallStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/BookingDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType/CustomerId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.Immutable"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/ZBOOK_MG_PCDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="RequiredProperties">
+                            <Collection>
+                                <PropertyPath>BookingDate</PropertyPath>
+                                <PropertyPath>CustomerId</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>LastChangedAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableProperties">
+                            <Collection>
+                                <PropertyPath>BookingDate</PropertyPath>
+                                <PropertyPath>CustomerId</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_Travel</PropertyPath>
+                                <PropertyPath>to_TravelBookSupplement</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/ZBOOK_SUP_MG_SUPP" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>LastChangedAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_Travel</PropertyPath>
+                                <PropertyPath>to_Travel_Booking</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/ZTRVEL_MG_PCDS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>LastChangedAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_Travel_Bookings</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_AgencyType/MimeType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.IsMediaType"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_CustomerType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.Contact">
+                    <Record>
+                        <PropertyValue Property="n">
+                            <Record>
+                                <PropertyValue Property="given" Path="FirstName"/>
+                                <PropertyValue Property="surname" Path="LastName"/>
+                                <PropertyValue Property="prefix" Path="Title"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="adr">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                                    <PropertyValue Property="locality" Path="City"/>
+                                    <PropertyValue Property="street" Path="Street"/>
+                                    <PropertyValue Property="country" Path="CountryCode"/>
+                                    <PropertyValue Property="code" Path="PostalCode"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="tel">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="type" EnumMember="Communication.PhoneType/home"/>
+                                    <PropertyValue Property="uri" Path="PhoneNumber"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="email">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="address" Path="EMailAddress"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Address" Qualifier="pref">
+                    <Record>
+                        <PropertyValue Property="type" EnumMember="Communication.ContactInformationType/preferred"/>
+                        <PropertyValue Property="locality" Path="City"/>
+                        <PropertyValue Property="street" Path="Street"/>
+                        <PropertyValue Property="country" Path="CountryCode"/>
+                        <PropertyValue Property="code" Path="PostalCode"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_AgencyType/EMailAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsEmailAddress"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_AgencyType/PhoneNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsPhoneNumber"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_CustomerType/EMailAddress" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsEmailAddress"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.xDMOxI_CustomerType/PhoneNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Communication.IsPhoneNumber"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
+                    <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
+                        <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="/sap/opu/odata/sap/ZSB_TRVL_PROS_MG_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="/sap/opu/odata/sap/ZSB_TRVL_PROS_MG_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

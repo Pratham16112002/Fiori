@@ -1,0 +1,136 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    controllerName="flightconn.controller.carrier.CarrierDetail"
+>
+    <Page>
+        <IconTabBar>
+            <items>
+                <IconTabFilter
+                    key="connectionDetails"
+                    text="Connection Details"
+                >
+                    <Panel>
+                        <form:SimpleForm
+                            id="FlightInfoForm"
+                            layout="ColumnLayout"
+                            editable="false"
+                        >
+                            <form:content>
+                                <Label text="Carrier Id:" />
+                                <Text
+                                    text="{
+                parts : [ 'CarrierId' , 'CarrierId_Text'],
+                formatter: '.formatter.carrierFormatter'
+                }"
+                                />
+
+                                <Label text="Flight Number:" />
+                                <Text text="{ConnectionId}" />
+
+                                <!-- Column 3 -->
+
+                                <Label text="Departure Airport:" />
+                                <Text text="{DepartureAirportID}" />
+
+                                <!-- Row 2, Column 1 -->
+
+                                <Label text="Departure:" />
+                                <Text
+                                    text="{
+                                path : 'DepartureTime' , 
+                                formatter : '.timeFormatter.formatTime'}"
+                                />
+
+                                <!-- Row 2, Column 1 -->
+
+                                <Label text="Arrival:" />
+                                <Text
+                                    text="
+                                {
+                                path : 'ArrivalTime' , 
+                                formatter : '.timeFormatter.formatTime'}"
+                                />
+
+                                <Label text="Flight Distance:" />
+                                <Text
+                                    text="{
+                                    parts : ['Distance','DistanceUnit']}"
+                                />
+                            </form:content>
+                        </form:SimpleForm>
+                    </Panel>
+                </IconTabFilter>
+                <IconTabFilter
+                    key="flights"
+                    text="Flights"
+                >
+                    <table:Table
+                        id="flightsTable"
+                        selectionMode="None"
+                    >
+                        <table:extension>
+                            <OverflowToolbar style="Standard">
+                                <Text text="Flights" />
+                            </OverflowToolbar>
+                        </table:extension>
+                        <table:columns>
+                            <table:Column width="8rem">
+                                <Label text="Carrier Id" />
+                                <table:template>
+                                    <Text text="{CarrierId}" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column>
+                                <Label text="Flight Number" />
+                                <table:template>
+                                    <Text text="{ConnectionId}" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column>
+                                <Label text="Flight Date" />
+                                <table:template>
+                                    <Text
+                                        text="{ 
+                                    path : 'FlightDate',
+                                    formatter : '.timeFormatter.formatDate' }"
+                                    />
+                                </table:template>
+                            </table:Column>
+                            <table:Column width="14rem">
+                                <Label text="Flight Price" />
+                                <table:template>
+                                    <Text
+                                        text="{
+                                parts : ['Price','CurrencyCode']}"
+                                    />
+                                </table:template>
+                            </table:Column>
+                            <table:Column>
+                                <Label text="Plane Type" />
+                                <table:template>
+                                    <Text text="{PlaneTypeId}" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column>
+                                <Label text="Seats Occupied" />
+                                <table:template>
+                                    <Text text="{SeatsOccupied}" />
+                                </table:template>
+                            </table:Column>
+                            <table:Column>
+                                <Label text="Maximum Seats" />
+                                <table:template>
+                                    <Text text="{SeatsMax}" />
+                                </table:template>
+                            </table:Column>
+                        </table:columns>
+                    </table:Table>
+                </IconTabFilter>
+            </items>
+        </IconTabBar>
+    </Page>
+</mvc:View>

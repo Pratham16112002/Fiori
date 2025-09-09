@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <TableSelectDialog
+        noDataText="No Airport Found"
+        title="Select Airport"
+        search=".handleAirportSearch"
+        searchPlaceholder="Search Airpot"
+        confirm="handleValueHelpClose"
+        cancel="handleValueHelpClose"
+        showClearButton="true"
+        items="{ 
+    path : '/ZPP_AIRP_ID_VH_CDS' }"
+    >
+        <ColumnListItem>
+            <cells>
+                <ObjectIdentifier
+                    title="{AirportId}"
+                    text="{Name}"
+                />
+                <Text text="{City}" />
+                <Text text="{Country}" />
+            </cells>
+        </ColumnListItem>
+        <columns>
+            <Column width="12rem">
+                <header>
+                    <Text text="Airport" />
+                </header>
+            </Column>
+            <Column width="10rem">
+                <header>
+                    <Text text="City" />
+                </header>
+            </Column>
+            <Column>
+                <header>
+                    <Text text="Country" />
+                </header>
+            </Column>
+        </columns>
+    </TableSelectDialog>
+</core:FragmentDefinition>
