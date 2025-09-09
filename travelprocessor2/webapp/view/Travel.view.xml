@@ -1,0 +1,241 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    controllerName="travelprocessor2.controller.Travel"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <f:DynamicPage
+        id="page"
+        title="{i18n>title}"
+    >
+        <f:header>
+            <f:DynamicPageHeader>
+                <layout:Grid
+                    defaultSpan="L2 M4 S12"
+                    hSpacing="1"
+                    vSpacing="1"
+                    position="Left"
+                >
+                    <layout:content>
+                        <VBox>
+                            <Label
+                                text="Customer ID"
+                                labelFor="customerInputID"
+                            />
+                            <MultiInput
+                                id="customerInputID"
+                                width="100%"
+                                valueHelpRequest="customerValueHelpRequest"
+                                showValueHelp="true"
+                                tokens="{ 
+                                path : 'travelConfig>/customerID/customerIDVH/selectedItems'
+                                 }"
+                            >
+                                <tokens>
+                                    <Token
+                                        key="{travelConfig>key}"
+                                        text="{travelConfig>text}"
+                                    />
+                                </tokens>
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Begin Date"
+                                labelFor="beginDatePickerID"
+                            />
+                            <DatePicker
+                                id="beginDatePickerID"
+                                valueFormat="dd-MM-yyy"
+                                width="100%"
+                                value="{travelConfig>/beginDate/value}"
+                            />
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="End Date"
+                                labelFor="endDatePickerID"
+                            />
+                            <DatePicker
+                                id="endDatePickerID"
+                                valueFormat="dd-MM-yyy"
+                                value="{travelConfig>/endDate/value}"
+                                width="100%"
+                            />
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="Agency ID"
+                                labelFor="AgencyIDInput"
+                            />
+                            <MultiInput
+                                id="AgencyIDInput"
+                                width="100%"
+                                valueHelpRequest="agencyValueHelpRequest"
+                                showValueHelp="true"
+                                tokens="{ 
+                                path : 'travelConfig>/agencyID/agencyIDVH/selectedItems' }"
+                            >
+                                <tokens>
+                                    <Token
+                                        key="{travelConfig>key}"
+                                        text="{travelConfig>text}"
+                                    />
+                                </tokens>
+                            </MultiInput>
+                        </VBox>
+
+                        <VBox>
+                            <Label
+                                text="OverAllStatus"
+                                labelFor="overAllStatusID"
+                            />
+                            <MultiComboBox
+                                id="overAllStatusID"
+                                items="{overAllStatus>/options}"
+                                selectedKeys="{overAllStatus>/selectedKeys}"
+                            >
+                                <items>
+                                    <core:Item
+                                        key="{overAllStatus>key}"
+                                        text="{overAllStatus>text}"
+                                    />
+                                </items>
+                            </MultiComboBox>
+                        </VBox>
+
+                        <HBox
+                            class="sapUiSmallMarginTop"
+                            width="100%"
+                        >
+                            <Button
+                                type="Emphasized"
+                                text="Go"
+                                press="handleFilterPress"
+                            />
+                            <Button
+                                type="Transparent"
+                                press="handleFilterReset"
+                                text="Reset"
+                            />
+                        </HBox>
+                    </layout:content>
+                </layout:Grid>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <table:Table
+                id="travelTable"
+                selectionMode="MultiToggle"
+                rows="{ path : '/ZTRVEL_MG_PCDS'}"
+            >
+                <table:extension>
+                    <OverflowToolbar style="Standard">
+                        <Title
+                            id="title"
+                            text="Travel"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+                <table:columns>
+                    <table:Column>
+                        <Label text="Travel ID" />
+                        <table:template>
+                            <Text text="{TravelId}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Agency" />
+                        <table:template>
+                            <Text
+                                text="{
+                        parts : [ 'AgencyId' , 'AgencyName'],
+                        formatter : 'formatter.formatWithName' 
+                        }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Customer" />
+                        <table:template>
+                            <Text
+                                text="{
+                            parts : ['CustomerId' , 'CustomerName'],
+                            formatter : '.formatter.formatWithName' }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Begin Date" />
+                        <table:template>
+                            <Text
+                                text="{
+                            path : 'BeginDate',
+                            formatter : '.formatter.formatDate'
+                            }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="End Date" />
+                        <table:template>
+                            <Text
+                                text="{
+                            path : 'EndDate',
+                            formatter : '.formatter.formatDate'
+                            }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Booking Fee" />
+                        <table:template>
+                            <Text
+                                text="{
+                            parts : ['BookingFee' , 'CurrencyCode'],
+                            type : 'sap.ui.model.type.Currency',
+                            formatOptions : { showMeasure : true }}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Description" />
+                        <table:template>
+                            <Text text="{Description}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Total Price" />
+                        <table:template>
+                            <Text
+                                text="{
+                            parts : ['TotalPrice', 'CurrencyCode'],
+                            type : 'sap.ui.model.type.Currency',
+                            formatOptions : { showMeasure : true}
+                            }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Status" />
+                        <table:template>
+                            <ObjectStatus
+                                text="{OverallStatusText}"
+                                state="{
+                            path : 'OverallStatus',
+                            formatter : '.formatter.formatOverallStatus'}"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>
