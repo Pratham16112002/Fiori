@@ -6,15 +6,15 @@
 >
     <valuehelpdialog:ValueHelpDialog
 		title="Product"
-		ok=".onAgencyValueHelpOkPress"
-		cancel=".onAgencyValueHelpCancelPress"
-		afterClose=".onAgencyValueHelpAfterClose"
+		ok=".onOk"
+		cancel=".onCancel"
+		afterClose=".onAfterClose"
 		supportRanges="true"
 		supportMultiselect="true"
 		key="AgencyID"
 		descriptionKey="Name">
 		<valuehelpdialog:filterBar>
-			<fb:FilterBar advancedMode="true" search=".onAgencyFilterBarSearch" isRunningInValueHelpDialog="true">
+			<fb:FilterBar advancedMode="true" search=".onSearch" isRunningInValueHelpDialog="true">
 				<fb:filterGroupItems>
 					<fb:FilterGroupItem
 						groupName="__$INTERNAL$"

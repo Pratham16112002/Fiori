@@ -9,7 +9,7 @@
     xmlns="sap.m"
 >
     <f:DynamicPage
-        id="page"
+        id="travelPage"
         title="{i18n>title}"
     >
         <f:header>
@@ -142,6 +142,8 @@
                             id="title"
                             text="Travel"
                         />
+                        <ToolbarSpacer ></ToolbarSpacer>
+                        <Button text="Create" type="Transparent" press="navigateToCreateTravelHandler"></Button>
                     </OverflowToolbar>
                 </table:extension>
                 <table:columns>

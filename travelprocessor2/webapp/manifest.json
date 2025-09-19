@@ -41,10 +41,11 @@
       "desktop": true,
       "tablet": true,
       "phone": true
-    }
+    },
+    "fullWidth": true
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.136.6",
       "libs": {
@@ -95,12 +96,21 @@
           "target": [
             "TargetTravel"
           ]
+        },
+        {
+          "name": "NewTravel",
+          "pattern": "newTravel",
+          "target": "NewTravel"
         }
       ],
       "targets": {
         "TargetTravel": {
           "id": "Travel",
           "name": "Travel"
+        },
+        "NewTravel": {
+          "viewName": "create/NewTravel",
+          "viewLevel": 2
         }
       }
     },

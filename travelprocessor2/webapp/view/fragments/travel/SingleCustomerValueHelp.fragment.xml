@@ -9,8 +9,8 @@
 		ok=".onOk"
 		cancel=".onCancel"
 		afterClose=".onAfterClose"
-		supportRanges="true"
-		supportMultiselect="true"
+		supportRanges="false"
+		supportMultiselect="false"
 		key="CustomerID"
 		descriptionKey="FirstName">
 		<valuehelpdialog:filterBar>

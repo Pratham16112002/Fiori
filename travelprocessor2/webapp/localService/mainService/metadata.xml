@@ -71,6 +71,17 @@
                 <Property Name="PhoneNumber" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Phone No." sap:quickinfo="Flight Reference Scenario: Phone Number" sap:semantics="tel"/>
                 <Property Name="EMailAddress" Type="Edm.String" MaxLength="256" sap:label="E-Mail Address" sap:quickinfo="Flight Reference Scenario: Email Address" sap:semantics="email"/>
             </EntityType>
+            <EntityType Name="I_CurrencyType" sap:label="Currency" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Currency"/>
+                </Key>
+                <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="UpperCase" sap:text="Currency_Text" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code"/>
+                <Property Name="Currency_Text" Type="Edm.String" MaxLength="40" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/>
+                <Property Name="CurrencyISOCode" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Currency Code"/>
+                <Property Name="AlternativeCurrencyKey" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Alternative Key"/>
+                <Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:label="Primary" sap:quickinfo="Primary SAP Currency Code for ISO Code"/>
+            </EntityType>
             <EntityType Name="ZBOOK_MG_PCDSType" sap:label="Travel Booking Details" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="TravelId"/>
@@ -86,7 +97,7 @@
                 <Property Name="ConnectionId" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Flight Number" sap:quickinfo="Flight Reference Scenario: Connection ID"/>
                 <Property Name="FlightDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Flight Date" sap:quickinfo="Flight Reference Scenario: Flight Date"/>
                 <Property Name="FlightPrice" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Flight Price" sap:quickinfo="Flight Reference Scenario: Flight Price"/>
-                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:value-list="standard" sap:semantics="currency-code"/>
                 <Property Name="BookingStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="BookingStatusTxt" sap:label="Booking Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
                 <Property Name="BookingStatusTxt" Type="Edm.String" MaxLength="1024" sap:label="Booking Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
@@ -123,7 +134,7 @@
                 <Property Name="EndDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="End Date" sap:quickinfo="Flight Reference Scenario: End Date"/>
                 <Property Name="BookingFee" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Booking Fee" sap:quickinfo="Flight Reference Scenario: Booking Fee"/>
                 <Property Name="TotalPrice" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:variable-scale="true" sap:label="Total Price" sap:quickinfo="Flight Reference Scenario: Total Price"/>
-                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:semantics="currency-code"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:quickinfo="Flight Reference Scenario: Currency Code" sap:value-list="standard" sap:semantics="currency-code"/>
                 <Property Name="Description" Type="Edm.String" MaxLength="1024" sap:label="Description" sap:quickinfo="Flight Reference Scenario: Description"/>
                 <Property Name="OverallStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="OverallStatusText" sap:label="Overall Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
                 <Property Name="OverallStatusText" Type="Edm.String" MaxLength="1024" sap:label="Overall Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
@@ -132,12 +143,17 @@
                 <Property Name="LastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="to_Agency" Relationship="cds_zsr_trvel_mg.assoc_FCD0302D5775A8D3E8DD16441B87B35F" FromRole="FromRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F" ToRole="ToRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+                <NavigationProperty Name="to_Currency" Relationship="cds_zsr_trvel_mg.assoc_ED9A9F0C385D69A375C207D27858F63C" FromRole="FromRole_assoc_ED9A9F0C385D69A375C207D27858F63C" ToRole="ToRole_assoc_ED9A9F0C385D69A375C207D27858F63C"/>
                 <NavigationProperty Name="to_Customer" Relationship="cds_zsr_trvel_mg.assoc_A450DDA5529F540EC53E4D2B22DF059B" FromRole="FromRole_assoc_A450DDA5529F540EC53E4D2B22DF059B" ToRole="ToRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
                 <NavigationProperty Name="to_Travel_Bookings" Relationship="cds_zsr_trvel_mg.assoc_B8B688337FF3A77AD757E225F52A83E9" FromRole="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9" ToRole="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
             </EntityType>
             <Association Name="assoc_FCD0302D5775A8D3E8DD16441B87B35F" sap:content-version="1">
                 <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
                 <End Type="cds_zsr_trvel_mg.xDMOxI_AgencyType" Multiplicity="0..1" Role="ToRole_assoc_FCD0302D5775A8D3E8DD16441B87B35F"/>
+            </Association>
+            <Association Name="assoc_ED9A9F0C385D69A375C207D27858F63C" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_ED9A9F0C385D69A375C207D27858F63C"/>
+                <End Type="cds_zsr_trvel_mg.I_CurrencyType" Multiplicity="0..1" Role="ToRole_assoc_ED9A9F0C385D69A375C207D27858F63C"/>
             </Association>
             <Association Name="assoc_A450DDA5529F540EC53E4D2B22DF059B" sap:content-version="1">
                 <End Type="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_A450DDA5529F540EC53E4D2B22DF059B"/>
@@ -192,12 +208,17 @@
             <EntityContainer Name="cds_zsr_trvel_mg_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="xDMOxI_Agency" EntityType="cds_zsr_trvel_mg.xDMOxI_AgencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="xDMOxI_Customer" EntityType="cds_zsr_trvel_mg.xDMOxI_CustomerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="I_Currency" EntityType="cds_zsr_trvel_mg.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZBOOK_MG_PCDS" EntityType="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" sap:creatable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZBOOK_SUP_MG_SUPP" EntityType="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType" sap:creatable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="ZTRVEL_MG_PCDS" EntityType="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType" sap:searchable="true" sap:content-version="1"/>
                 <AssociationSet Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" Association="cds_zsr_trvel_mg.assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZBOOK_MG_PCDS" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
                     <End EntitySet="xDMOxI_Customer" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_ED9A9F0C385D69A375C207D27858F63C" Association="cds_zsr_trvel_mg.assoc_ED9A9F0C385D69A375C207D27858F63C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZTRVEL_MG_PCDS" Role="FromRole_assoc_ED9A9F0C385D69A375C207D27858F63C"/>
+                    <End EntitySet="I_Currency" Role="ToRole_assoc_ED9A9F0C385D69A375C207D27858F63C"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_DE571062E0370F4BBCC16948F40EDD75" Association="cds_zsr_trvel_mg.assoc_DE571062E0370F4BBCC16948F40EDD75" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZBOOK_SUP_MG_SUPP" Role="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
@@ -283,6 +304,23 @@
             </Annotations>
             <Annotations Target="cds_zsr_trvel_mg.ZTRVEL_MG_PCDSType/to_Travel_Bookings" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/I_Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/xDMOxI_Agency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
@@ -489,6 +527,16 @@
             </Annotations>
             <Annotations Target="cds_zsr_trvel_mg.xDMOxI_AgencyType/MimeType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.IsMediaType"/>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.I_CurrencyType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="Currency"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.I_CurrencyType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.UnitSpecificScale" Path="Decimals"/>
             </Annotations>
             <Annotations Target="cds_zsr_trvel_mg.xDMOxI_CustomerType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Communication.Contact">
