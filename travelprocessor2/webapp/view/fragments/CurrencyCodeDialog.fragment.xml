@@ -2,18 +2,18 @@
 	xmlns="sap.m"
 	xmlns:core="sap.ui.core">
 	<SelectDialog
-		id="mySelectDialog"
+		id="CurrencyCodeSelectDialog"
 		noDataText="No Currency Found"
 		title="Select Product"
 		search=".onSearch"
-		confirm=".onDialogClose"
-		cancel=".onDialogClose"
+		confirm=".onConfirmDialogClose"
+		cancel=".onCancelDialogClose"
 		items="{
-			path: '/I_CurrencyType'
+			path: '/I_Currency'
 		}">
 		<StandardListItem
 			title="{Currency}"
-			description="{CurrencyText}"
+			description="{Currency_Text}"
 			 />
 	</SelectDialog>
 </core:FragmentDefinition>

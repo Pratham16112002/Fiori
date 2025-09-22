@@ -1,4 +1,5 @@
-<mvc:View xmlns:uxap="sap.uxap"
+<mvc:View
+    xmlns:uxap="sap.uxap"
     xmlns:table="sap.ui.table"
     xmlns:core="sap.ui.core"
     xmlns:layout="sap.ui.layout"
@@ -10,125 +11,151 @@
 >
     <uxap:ObjectPageLayout id="newTravelPage">
         <uxap:headerTitle>
-            	<uxap:ObjectPageDynamicHeaderTitle>
-				<uxap:expandedHeading>
-					<Title text="New Travel" wrapping="true"/>
-				</uxap:expandedHeading>
-				<uxap:actions>
-					<Button text="Save" type="Emphasized" press="onTravelSave"/>
-					<Button type="Transparent" text="Cancel" press="onTravelCancel"/>
-				</uxap:actions>
-			</uxap:ObjectPageDynamicHeaderTitle>
-            
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:expandedHeading>
+                    <Title
+                        text="New Travel"
+                        wrapping="true"
+                    />
+                </uxap:expandedHeading>
+                <uxap:actions>
+                    <Button
+                        text="Save"
+                        type="Emphasized"
+                        press="onTravelSave"
+                    />
+                    <Button
+                        type="Transparent"
+                        text="Cancel"
+                        press="onTravelCancel"
+                    />
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
         </uxap:headerTitle>
         <uxap:ObjectPageSection>
-        <uxap:ObjectPageSubSection >
-            <Panel headerText="Travel Details">
-                <form:SimpleForm
-                    maxContainerCols="3"
-                    layout="ColumnLayout"
-                    columnsXL="3"
-                    columnsL="3"
-                    columnsM="3"
-                    singleContainerFullSize="false"
-                >
-                    <!-- Travel ID -->
-                    <Label text="Travel ID:" />
-                    <Input editable="false" value=""/>
+            <uxap:ObjectPageSubSection>
+                <Panel headerText="Travel Details">
+                    <form:SimpleForm
+                        maxContainerCols="3"
+                        layout="ColumnLayout"
+                        columnsXL="3"
+                        columnsL="3"
+                        columnsM="3"
+                        singleContainerFullSize="false"
+                    >
+                        <!-- Travel ID -->
+                        <Label text="Travel ID:" />
+                        <Input
+                            editable="false"
+                            value=""
+                        />
 
-                    <!-- Starting Date -->
-                    <Label
-                        text="Starting Date:"
-                        required="true"
-                    />
-                    <DatePicker
-                        placeholder="e.g. Dec 31, 2025"
-                        valueFormat="yyyy-MM-dd"
-                        displayFormat="long"
-                    />
+                        <!-- Begin Date -->
+                        <Label
+                            text="Begin Date:"
+                            required="true"
+                        />
+                        <DatePicker
+                            placeholder="e.g. Dec 31, 2025"
+                            displayFormatType="Gregorian"
+                            value="{ 
+                            path : 'newTravelForm>/BeginDate',
+                            type : 'sap.ui.model.type.Date'
+                            }"
+                            displayFormat="long"
+                        />
 
-                    <!-- Total Price -->
-                    <Label text="Total Price:" />
-                    <Input
-                        showValueHelp="true"
-                        valueHelpRequest=".onValueHelpTotalPrice"
-                    />
+                        <!-- Total Price -->
+                        <Label text="Total Price:" />
+                        <Input
+                            value="{newTravelForm>/TotalPrice}"
+                            type="Number"
+                        />
 
-                    <!-- Overall Status -->
-                    <Label
-                        text="Overall Status:"
-                        required="true"
-                    />
-                    <Select selectedKey="{newTravelForm>/OverallStatus}"
-                        items="{
-						path: '/xDMO',
-						sorter: { path: 'Name' }
-					}">
-					<core:Item key="{ProductId}" text="{Name}" />
-                    </Select>
+                        <!-- Overall Status -->
+                        <Label
+                            text="Overall Status:"
+                            required="true"
+                        />
+                        <Select
+                            selectedKey="{newTravelForm>/OverallStatus}"
+                            items="{
+						path: '/xDMOxI_Overall_Status_VH'
+					}"
+                        >
+                            <core:Item
+                                key="{OverallStatus}"
+                                text="{OverallStatus_Text}"
+                            />
+                        </Select>
 
-                    <!-- Agency ID -->
-                    <Label
-                        text="Agency ID:"
-                        required="true"
-                        
-                    />
-                    <Input 
-                        value="{newTravelForm>/AgencyID}"
-                        valueHelpRequest="singleAgencyValueHelpRequest"
-                        showValueHelp="true"
-                    ></Input>
+                        <!-- Agency ID -->
+                        <Label
+                            text="Agency ID:"
+                            required="true"
+                        />
+                        <Input
+                            value="{newTravelForm>/AgencyID}"
+                            valueHelpRequest="singleAgencyValueHelpRequest"
+                            showValueHelp="true"
+                            type="Text"
+                        />
 
-                    <!-- End Date -->
-                    <Label
-                        text="End Date:"
-                        required="true"
-                    />
-                    <DatePicker
-                        placeholder="e.g. Dec 31, 2025"
-                        valueFormat="yyyy-MM-dd"
-                        displayFormat="long"
-                    />
+                        <!-- End Date -->
+                        <Label
+                            text="End Date:"
+                            required="true"
+                        />
+                        <DatePicker
+                            value="{
+                            path : 'newTravelForm>/EndDate',
+                            type : 'sap.ui.model.type.Date'
+                            }"
+                            placeholder="e.g. Dec 31, 2025"
+                            displayFormatType="Gregorian"
+                            displayFormat="long"
+                        />
 
-                    <!-- Currency Code -->
-                    <Label
-                        text="Currency Code:"
-                        required="true"
-                    />
-                    <Input
-                        showValueHelp="true"
-                        valueHelpRequest=".onValueHelpCurrency"
-                    />
+                        <!-- Currency Code -->
+                        <Label
+                            text="Currency Code:"
+                            required="true"
+                        />
+                        <Input
+                            value="{newTravelForm>/CurrencyCode}"
+                            showValueHelp="true"
+                            valueHelpRequest="onValueHelpCurrency"
+                        />
 
-                    <!-- Customer ID -->
-                    <Label
-                        text="Customer ID:"
-                        required="true"
-                    />
-                    <Input 
-                        value="{newTravelForm>/CustomerID}"
-                        valueHelpRequest="singleCustomerValueHelpRequest"
-                        showValueHelp="true"
-                    ></Input>
+                        <!-- Customer ID -->
+                        <Label
+                            text="Customer ID:"
+                            required="true"
+                        />
+                        <Input
+                            value="{newTravelForm>/CustomerID}"
+                            valueHelpRequest="singleCustomerValueHelpRequest"
+                            showValueHelp="true"
+                        />
 
-                    <!-- Booking Fee -->
-                    <Label
-                        text="Booking Fee:"
-                        required="true"
-                    />
-                    <Input
-                        showValueHelp="true"
-                        valueHelpRequest=".onValueHelpBookingFee"
-                    />
+                        <!-- Booking Fee -->
+                        <Label
+                            text="Booking Fee:"
+                            required="true"
+                        />
+                        <Input
+                            value="{newTravelForm>/BookingFee}"
+                            type="Number"
+                        />
 
-                    <!-- Description -->
-                    <Label text="Description:" />
-                    <Input />
-                </form:SimpleForm>
-            </Panel>
-        </uxap:ObjectPageSubSection>
+                        <!-- Description -->
+                        <Label text="Description:" />
+                        <Input value="{newTravelForm>/Description}" />
+                    </form:SimpleForm>
+                </Panel>
+            </uxap:ObjectPageSubSection>
         </uxap:ObjectPageSection>
-       <!-- <f:footer>
+        <!-- <f:footer>
     <f:DynamicPageFooter>
         <OverflowToolbar>
             <ToolbarSpacer/>
@@ -137,6 +164,5 @@
         </OverflowToolbar>
     </f:DynamicPageFooter>
 <footer> -->
-
     </uxap:ObjectPageLayout>
 </mvc:View>

@@ -28,6 +28,9 @@ sap.ui.define([
             this._getTravelUtilityModel().setProperty("/customerID/customerIDVH/selectedItems",[])
             this._getTravelUtilityModel().setProperty("/agencyID/agencyIDVH/selectedItems",[])
         },
+        oGetModel() {
+            return this.getView().getModel()
+        },
 
         // Controller
         // Information for Agency 
