@@ -82,7 +82,7 @@ sap.ui.define([
             const aTokens = oEvent.getParameter("tokens")
             if(aTokens && aTokens.length > 0){
                 const aToken = aTokens[0]
-                this._oLocalModel.setProperty("/AgencyID",aToken.getKey())
+                this._oLocalModel.setProperty("/AgencyID/value",aToken.getKey())
             } 
             this._oDialog.close()
         }

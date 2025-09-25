@@ -51,9 +51,11 @@
                             />
                             <DatePicker
                                 id="beginDatePickerID"
-                                valueFormat="dd-MM-yyy"
                                 width="100%"
-                                value="{travelConfig>/beginDate/value}"
+                                value="{ 
+                            path : 'travelConfig>/beginDate/value',
+                            type : 'sap.ui.model.type.Date'
+                            }"
                             />
                         </VBox>
 
@@ -64,8 +66,10 @@
                             />
                             <DatePicker
                                 id="endDatePickerID"
-                                valueFormat="dd-MM-yyy"
-                                value="{travelConfig>/endDate/value}"
+                                value="{
+                            path : 'travelConfig>/endDate/value',
+                            type : 'sap.ui.model.type.Date'
+                            }"
                                 width="100%"
                             />
                         </VBox>
@@ -99,13 +103,15 @@
                             />
                             <MultiComboBox
                                 id="overAllStatusID"
-                                items="{overAllStatus>/options}"
+                                items="{
+						        path: '/xDMOxI_Overall_Status_VH'
+					            }"
                                 selectedKeys="{overAllStatus>/selectedKeys}"
                             >
                                 <items>
                                     <core:Item
-                                        key="{overAllStatus>key}"
-                                        text="{overAllStatus>text}"
+                                        key="{OverallStatus}"
+                                        text="{OverallStatus_Text}"
                                     />
                                 </items>
                             </MultiComboBox>
@@ -142,8 +148,12 @@
                             id="title"
                             text="Travel"
                         />
-                        <ToolbarSpacer ></ToolbarSpacer>
-                        <Button text="Create" type="Transparent" press="navigateToCreateTravelHandler"></Button>
+                        <ToolbarSpacer />
+                        <Button
+                            text="Create"
+                            type="Transparent"
+                            press="navigateToCreateTravelHandler"
+                        />
                     </OverflowToolbar>
                 </table:extension>
                 <table:columns>

@@ -59,17 +59,20 @@
                             placeholder="e.g. Dec 31, 2025"
                             displayFormatType="Gregorian"
                             value="{ 
-                            path : 'newTravelForm>/BeginDate',
+                            path : 'newTravelForm>/BeginDate/value',
                             type : 'sap.ui.model.type.Date'
                             }"
-                            displayFormat="long"
+                            valueState="{newTravelForm>/BeginDate/valueState}"
+                            valueStateText="{newTravelForm>/BeginDate/valueStateText}"
                         />
 
                         <!-- Total Price -->
                         <Label text="Total Price:" />
                         <Input
-                            value="{newTravelForm>/TotalPrice}"
+                            value="{newTravelForm>/TotalPrice/value}"
                             type="Number"
+                            valueState="{newTravelForm>/TotalPrice/valueState}"
+                            valueStateText="{newTravelForm>/TotalPrice/valueStateText}"
                         />
 
                         <!-- Overall Status -->
@@ -78,7 +81,7 @@
                             required="true"
                         />
                         <Select
-                            selectedKey="{newTravelForm>/OverallStatus}"
+                            selectedKey="{newTravelForm>/OverallStatus/value}"
                             items="{
 						path: '/xDMOxI_Overall_Status_VH'
 					}"
@@ -95,10 +98,13 @@
                             required="true"
                         />
                         <Input
-                            value="{newTravelForm>/AgencyID}"
+                            value="{newTravelForm>/AgencyID/value}"
                             valueHelpRequest="singleAgencyValueHelpRequest"
                             showValueHelp="true"
+                            required="true"
                             type="Text"
+                            valueState="{newTravelForm>/AgencyID/valueState}"
+                            valueStateText="{newTravelForm>/AgencyID/valueStateText}"
                         />
 
                         <!-- End Date -->
@@ -108,12 +114,14 @@
                         />
                         <DatePicker
                             value="{
-                            path : 'newTravelForm>/EndDate',
+                            path : 'newTravelForm>/EndDate/value',
                             type : 'sap.ui.model.type.Date'
                             }"
+                            required="true"
                             placeholder="e.g. Dec 31, 2025"
                             displayFormatType="Gregorian"
-                            displayFormat="long"
+                            valueState="{newTravelForm>/EndDate/valueState}"
+                            valueStateText="{newTravelForm>/EndDate/valueStateText}"
                         />
 
                         <!-- Currency Code -->
@@ -122,20 +130,23 @@
                             required="true"
                         />
                         <Input
-                            value="{newTravelForm>/CurrencyCode}"
+                            value="{newTravelForm>/CurrencyCode/value}"
                             showValueHelp="true"
+                            required="true"
+                            valueState="{newTravelForm>/CurrencyCode/valueState}"
+                            valueStateText="{newTravelForm>/CurrencyCode/valueStateText}"
                             valueHelpRequest="onValueHelpCurrency"
                         />
 
                         <!-- Customer ID -->
-                        <Label
-                            text="Customer ID:"
-                            required="true"
-                        />
+                        <Label text="Customer ID:" />
                         <Input
-                            value="{newTravelForm>/CustomerID}"
+                            valueState="{newTravelForm>/CustomerID/valueState}"
+                            valueStateText="{newTravelForm>/CustomerID/valueStateText}"
+                            value="{newTravelForm>/CustomerID/value}"
                             valueHelpRequest="singleCustomerValueHelpRequest"
                             showValueHelp="true"
+                            required="true"
                         />
 
                         <!-- Booking Fee -->
@@ -144,13 +155,20 @@
                             required="true"
                         />
                         <Input
-                            value="{newTravelForm>/BookingFee}"
+                            value="{newTravelForm>/BookingFee/value}"
                             type="Number"
+                            required="true"
+                            valueState="{newTravelForm>/BookingFee/valueState}"
+                            valueStateText="{newTravelForm>/BookingFee/valueStateText}"
                         />
 
                         <!-- Description -->
                         <Label text="Description:" />
-                        <Input value="{newTravelForm>/Description}" />
+                        <Input
+                            value="{newTravelForm>/Description/value}"
+                            valueState="{newTravelForm>/Description/valueState}"
+                            valueStateText="{newTravelForm>/Description/valueStateText}"
+                        />
                     </form:SimpleForm>
                 </Panel>
             </uxap:ObjectPageSubSection>
@@ -166,3 +184,19 @@
 <footer> -->
     </uxap:ObjectPageLayout>
 </mvc:View>
+
+
+<!-- [
+    {
+        "sPath": "OverallStatus",
+        "sOperator": "EQ",
+        "oValue1": "O",
+        "_bMultiFilter": false
+    },
+    {
+        "sPath": "OverallStatus",
+        "sOperator": "EQ",
+        "oValue1": "X",
+        "_bMultiFilter": false
+    }
+] -->

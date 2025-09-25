@@ -36,7 +36,7 @@ sap.ui.define([
             const oSelectedItem = oEvnt.getParameter("selectedItem")
             if(oSelectedItem){
                 console.log(oSelectedItem)
-                this._oLocalModel.setProperty("/CurrencyCode",oSelectedItem.getTitle())
+                this._oLocalModel.setProperty("/CurrencyCode/value",oSelectedItem.getTitle())
             }
             this.removeFilter()
         }
