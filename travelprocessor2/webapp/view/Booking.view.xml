@@ -1,0 +1,129 @@
+<mvc:View
+    xmlns:table="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    controllerName="travelprocessor2.controller.Booking"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+    <f:DynamicPage
+        id="bookingPage"
+        title="{i18n>title}"
+    >
+        <f:header>
+            <f:DynamicPageHeader>
+                <layout:Grid
+                    defaultSpan="L2 M4 S12"
+                    hSpacing="1"
+                    vSpacing="1"
+                    position="Left"
+                >
+                    <layout:content>
+                        <f:DynamicPageTitle >
+                            <f:content>
+                                <Title id="pageTitle" ></Title>
+                            </f:content>
+                        </f:DynamicPageTitle>
+                    </layout:content>
+                </layout:Grid>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <table:Table
+                id="bookingTable"
+                selectionMode="MultiToggle"
+                rowSelectionChange=""
+            >
+                <table:extension>
+                    <OverflowToolbar style="">
+                        <Title
+                            id="bookingTableTitle"
+                            text="Booking"
+                        />
+                    </OverflowToolbar>
+                </table:extension>
+                <table:columns>
+                    <table:Column>
+                        <Label text="Travel ID" />
+                        <table:template>
+                            <Text text="{TravelId}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Booking ID" />
+                        <table:template>
+                            <Text text="{BookingId}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Booking Date" />
+                        <table:template>
+                            <Text text="{BookingDate}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Customer" />
+                        <table:template>
+                            <Text
+                                text="{
+                                parts : ['CustomerId','CustomerName'],
+                                formatter : 'formatter.formatWithName'
+                            }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Carrier" />
+                        <table:template>
+                            <Text
+                                text="{ 
+                        parts : ['CarrierId', 'CarrierName'],
+                        formatter : 'formatter.formatWithName' }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Connection ID" />
+                        <table:template>
+                            <Text text="{ConnectionId}" />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Flight" />
+                        <table:template>
+                            <Text
+                                text="{ 
+                            path : 'FlightDate',
+                            formatter : '.formatter.formatDate' }"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Flight Price" />
+                        <table:template>
+                            <Text
+                                text="{
+                            parts : ['FlightPrice', 'CurrencyCode'],
+                            type : 'sap.ui.model.type.Currency',
+                            formatOptions : { showMeasure : true }}"
+                            />
+                        </table:template>
+                    </table:Column>
+                    <table:Column>
+                        <Label text="Booking Status" />
+                        <table:template>
+                            <ObjectStatus
+                                text="{BookingStatus}"
+                                state="{ 
+                            path : 'BookingStatus',
+                            formatter : '.formatter.formatBookingStatus' }"
+                            />
+                        </table:template>
+                    </table:Column>
+                </table:columns>
+            </table:Table>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

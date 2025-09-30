@@ -21,6 +21,21 @@ sap.ui.define([
                 }
             }
         },
+        formatBookingStatus : function (code) {
+            if(code) {
+                switch (code) {
+                    case 'X':
+                        return "Cancelled"
+                    case 'N':
+                        return "New"
+                    case 'B':
+                        return "Booked"
+                    default:
+                        return "None"
+                        break;
+                }
+            }
+        },
         formatDate : function (oDate) {
             if(!oDate){
                 return ""

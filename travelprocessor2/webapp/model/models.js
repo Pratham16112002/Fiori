@@ -23,7 +23,11 @@ function (JSONModel, Device) {
         createTravelUtilityModel : function () {
             let oModel = new JSONModel();
             oModel.loadData(sap.ui.require.toUrl("travelprocessor2/model/travel/configTravelModel.json"))
-            return oModel;
+            return oModel;p
+        },
+        createBookingUtilityModel : function () {
+          let oModel = new JSONModel();
+            oModel.loadData(sap.ui.require.toUrl("travelprocessor2/model/booking/configBookingModel.json"))
         }
     };
 

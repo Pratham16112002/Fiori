@@ -117,9 +117,10 @@
                             </MultiComboBox>
                         </VBox>
 
-                        <HBox
-                            class="sapUiSmallMarginTop"
-                            width="100%"
+                        <FlexBox
+                            direction="Column"
+                            alignItems="Center"
+                            
                         >
                             <Button
                                 type="Emphasized"
@@ -128,10 +129,10 @@
                             />
                             <Button
                                 type="Transparent"
-                                press="handleFilterReset"
                                 text="Reset"
+                                press="handleFilterReset"
                             />
-                        </HBox>
+                        </FlexBox>
                     </layout:content>
                 </layout:Grid>
             </f:DynamicPageHeader>
@@ -140,12 +141,13 @@
             <table:Table
                 id="travelTable"
                 selectionMode="MultiToggle"
+                rowSelectionChange="onSingleTravelSelect"
                 rows="{ path : '/ZTRVEL_MG_PCDS'}"
             >
                 <table:extension>
                     <OverflowToolbar style="Standard">
                         <Title
-                            id="title"
+                            id="TravelTableTitlt"
                             text="Travel"
                         />
                         <ToolbarSpacer />

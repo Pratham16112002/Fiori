@@ -56,6 +56,13 @@
                 <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time"/>
                 <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time"/>
             </EntityType>
+            <EntityType Name="xDMOxI_Booking_Status_VHType" sap:label="Booking Status Value Help" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="BookingStatus"/>
+                </Key>
+                <Property Name="BookingStatus" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="BookingStatus_Text" sap:label="Booking Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
+                <Property Name="BookingStatus_Text" Type="Edm.String" MaxLength="1024" sap:label="Booking Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
             <EntityType Name="xDMOxI_CustomerType" sap:label="Customer View - CDS Data Model" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="CustomerID"/>
@@ -108,6 +115,7 @@
                 <Property Name="BookingStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="BookingStatusTxt" sap:label="Booking Status" sap:quickinfo="Flight Reference Scenario: Travel Status"/>
                 <Property Name="BookingStatusTxt" Type="Edm.String" MaxLength="1024" sap:label="Booking Status" sap:quickinfo="Overall Status Text" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_BOOKING_STATUS" Relationship="cds_zsr_trvel_mg.assoc_5CF7C7090274495ED43C67A790F08F3D" FromRole="FromRole_assoc_5CF7C7090274495ED43C67A790F08F3D" ToRole="ToRole_assoc_5CF7C7090274495ED43C67A790F08F3D"/>
                 <NavigationProperty Name="to_Customer" Relationship="cds_zsr_trvel_mg.assoc_5DC3656C862DADCB8E0B31D7BFD4607E" FromRole="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E" ToRole="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
                 <NavigationProperty Name="to_TravelBookSupplement" Relationship="cds_zsr_trvel_mg.assoc_335CE526CA8349505D4EB1F9EED3EF49" FromRole="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49" ToRole="ToRole_assoc_335CE526CA8349505D4EB1F9EED3EF49"/>
                 <NavigationProperty Name="to_Travel" Relationship="cds_zsr_trvel_mg.assoc_B8B688337FF3A77AD757E225F52A83E9" FromRole="ToRole_assoc_B8B688337FF3A77AD757E225F52A83E9" ToRole="FromRole_assoc_B8B688337FF3A77AD757E225F52A83E9"/>
@@ -185,6 +193,10 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
+            <Association Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                <End Type="cds_zsr_trvel_mg.xDMOxI_CustomerType" Multiplicity="1" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+            </Association>
             <Association Name="assoc_335CE526CA8349505D4EB1F9EED3EF49" sap:content-version="1">
                 <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_335CE526CA8349505D4EB1F9EED3EF49">
                     <OnDelete Action="Cascade"/>
@@ -201,9 +213,9 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
-            <Association Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:content-version="1">
-                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
-                <End Type="cds_zsr_trvel_mg.xDMOxI_CustomerType" Multiplicity="1" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+            <Association Name="assoc_5CF7C7090274495ED43C67A790F08F3D" sap:content-version="1">
+                <End Type="cds_zsr_trvel_mg.ZBOOK_MG_PCDSType" Multiplicity="1" Role="FromRole_assoc_5CF7C7090274495ED43C67A790F08F3D"/>
+                <End Type="cds_zsr_trvel_mg.xDMOxI_Booking_Status_VHType" Multiplicity="1" Role="ToRole_assoc_5CF7C7090274495ED43C67A790F08F3D"/>
             </Association>
             <Association Name="assoc_DE571062E0370F4BBCC16948F40EDD75" sap:content-version="1">
                 <End Type="cds_zsr_trvel_mg.ZBOOK_SUP_MG_SUPPType" Multiplicity="1" Role="FromRole_assoc_DE571062E0370F4BBCC16948F40EDD75"/>
@@ -219,6 +231,7 @@
             </Association>
             <EntityContainer Name="cds_zsr_trvel_mg_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="xDMOxI_Agency" EntityType="cds_zsr_trvel_mg.xDMOxI_AgencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="xDMOxI_Booking_Status_VH" EntityType="cds_zsr_trvel_mg.xDMOxI_Booking_Status_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="xDMOxI_Customer" EntityType="cds_zsr_trvel_mg.xDMOxI_CustomerType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
                 <EntitySet Name="xDMOxI_Overall_Status_VH" EntityType="cds_zsr_trvel_mg.xDMOxI_Overall_Status_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="I_Currency" EntityType="cds_zsr_trvel_mg.I_CurrencyType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
@@ -228,6 +241,10 @@
                 <AssociationSet Name="assoc_5DC3656C862DADCB8E0B31D7BFD4607E" Association="cds_zsr_trvel_mg.assoc_5DC3656C862DADCB8E0B31D7BFD4607E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZBOOK_MG_PCDS" Role="FromRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
                     <End EntitySet="xDMOxI_Customer" Role="ToRole_assoc_5DC3656C862DADCB8E0B31D7BFD4607E"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5CF7C7090274495ED43C67A790F08F3D" Association="cds_zsr_trvel_mg.assoc_5CF7C7090274495ED43C67A790F08F3D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZBOOK_MG_PCDS" Role="FromRole_assoc_5CF7C7090274495ED43C67A790F08F3D"/>
+                    <End EntitySet="xDMOxI_Booking_Status_VH" Role="ToRole_assoc_5CF7C7090274495ED43C67A790F08F3D"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_DECFD471DDA27F23037E718372F4D578" Association="cds_zsr_trvel_mg.assoc_DECFD471DDA27F23037E718372F4D578" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="ZTRVEL_MG_PCDS" Role="FromRole_assoc_DECFD471DDA27F23037E718372F4D578"/>
@@ -374,6 +391,23 @@
                                 <PropertyPath>WebAddress</PropertyPath>
                             </Collection>
                         </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsr_trvel_mg.cds_zsr_trvel_mg_Entities/xDMOxI_Booking_Status_VH" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="Capabilities.UpdateRestrictions">

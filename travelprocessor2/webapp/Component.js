@@ -25,6 +25,9 @@ sap.ui.define([
             // set the Utility Model
             this.setModel(models.createTravelUtilityModel(),"travelConfig")
 
+            // set Booking utlity model
+            this.setModel(models.createBookingUtilityModel(),"bookConfig")
+
             // enable routing
             this.getRouter().initialize();
         }

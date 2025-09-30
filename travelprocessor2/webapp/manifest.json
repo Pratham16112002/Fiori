@@ -101,6 +101,11 @@
           "name": "NewTravel",
           "pattern": "newTravel",
           "target": "NewTravel"
+        },
+        {
+          "name" : "Booking",
+          "pattern" : "Travel/{path}",
+          "target" : "TargetBooking"
         }
       ],
       "targets": {
@@ -109,8 +114,12 @@
           "name": "Travel"
         },
         "NewTravel": {
-          "viewName": "create/NewTravel",
+          "name": "create/NewTravel",
           "viewLevel": 2
+        },
+        "TargetBooking" : {
+          "name" : "Booking",
+          "viewLevel": 1
         }
       }
     },

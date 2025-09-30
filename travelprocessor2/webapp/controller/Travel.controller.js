@@ -74,7 +74,7 @@ sap.ui.define([
                     and: false,
                 }))
             }
-            if(agencyCustomerFilter.length > 0){
+            if (agencyCustomerFilter.length > 0) {
                 aFilter.push(new Filter({
                     filters: agencyCustomerFilter,
                     and: false
@@ -110,12 +110,12 @@ sap.ui.define([
             }
         },
         handleFilterReset: function () {
-            this._getTravelUtilityModel().setProperty("/customerID/customeIDVH/selectedItems",[])
-            this._getTravelUtilityModel().setProperty("/agencyID/agencyIDVH/selectedItems",[])
-            this._getTravelUtilityModel().setProperty("/beginDate/value",undefined)
-            this._getTravelUtilityModel().setProperty("/endDate/value",undefined)
+            this._getTravelUtilityModel().setProperty("/customerID/customeIDVH/selectedItems", [])
+            this._getTravelUtilityModel().setProperty("/agencyID/agencyIDVH/selectedItems", [])
+            this._getTravelUtilityModel().setProperty("/beginDate/value", undefined)
+            this._getTravelUtilityModel().setProperty("/endDate/value", undefined)
 
-            this._getOverallStatusUtilityModel().setProperty("/selectedKeys",[])
+            this._getOverallStatusUtilityModel().setProperty("/selectedKeys", [])
 
             let oTable = this.byId("travelTable");
             let oBinding = oTable.getBinding("rows");
@@ -123,6 +123,19 @@ sap.ui.define([
         },
         navigateToCreateTravelHandler: function () {
             this.getRouter().navTo("NewTravel")
+        },
+        onSingleTravelSelect: function (oEvent) {
+            var oContext = oEvent.getParameter("rowContext");
+            if (oContext) {
+                var oSelectedObject = oContext.getObject();
+                var sTravelId = oSelectedObject.travelId; // ✅ Extract the travelId
+                console.log(sTravelId)
+                // Navigate to the Booking route, passing both parameters
+                this.getRouter().navTo("Booking", {
+                    travelId: sTravelId, // ✅ Pass the travelId
+                    travelPath: encodeURIComponent(oContext.getPath())
+                });
+            }
         }
     });
 });

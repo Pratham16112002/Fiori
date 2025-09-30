@@ -1,0 +1,26 @@
+{
+    "travelID": {
+        "travelIDVH": {
+            "selectedItems": []
+        }
+    },
+    "bookingID": {
+        "bookingIVHD": {
+            "selectedItems": []
+        }
+    },
+    "customerID": {
+        "customerIDVH": {
+            "selectedItems": []
+        }
+    },
+    "bookingDate": {
+        "value": ""
+    },
+    "flightDate": {
+        "value": ""
+    },
+    "bookingStatus" : {
+        "selectedKeys" : []
+    }
+}
